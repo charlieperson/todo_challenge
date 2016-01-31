@@ -6,10 +6,11 @@ describe('To-do list', function() {
   var item = element(by.className('item'));
   var items = element.all(by.className('item'));
   var checkBox = element.all(by.className('checkit'));
-  var h2 = element.all(by.css('h2'));
+  var h4 = element.all(by.css('h4'));
   var editBtn = element.all(by.className('editBtn')).first();
   var clearCompletedBtn = element(by.className('clearComplete'));
   var deleteBtn = element.all(by.className('deleteBtn'));
+  var showCompleteBtn = element(by.className('showCompleteBtn'));
 
   beforeEach (function() {
     browser.get('http://localhost:8080');
@@ -60,7 +61,7 @@ describe('To-do list', function() {
     taskField.sendKeys('My first task!');
     addTaskButton.click();
     checkBox.first().click();
-    expect(h2.first().getAttribute('class')).toMatch(/completed-true/);
+    expect(h4.first().getAttribute('class')).toMatch(/completed-true/);
   });
 
   // As someone who has done lots of stuff
@@ -73,7 +74,7 @@ describe('To-do list', function() {
     addTaskButton.click();
     checkBox.first().click();
     clearCompletedBtn.click();
-    expect(h2.first().getText()).toEqual('task 1');
+    expect(h4.first().getText()).toEqual('task 1');
   });
 
   // As a person who doesn't like counting by hand
@@ -85,6 +86,19 @@ describe('To-do list', function() {
     taskField.sendKeys('task 2');
     addTaskButton.click();
     deleteBtn.first().click();
-    expect(h2.first().getText()).toEqual('task 1');
+    expect(h4.first().getText()).toEqual('task 1');
+  });
+
+  // As a person with a lot of tasks
+  // I want to be able to filter my tasks by "All", "Active", "Complete"
+  // So that I only see the relevant tasks
+  it('allows users to filter tasks by those that are complete', function() {
+    taskField.sendKeys('task 1');
+    addTaskButton.click();
+    taskField.sendKeys('task 2');
+    addTaskButton.click();
+    checkBox.first().click();
+    showCompleteBtn.click();
+    expect(h4.first().getText()).toEqual('task 2');
   });
 });

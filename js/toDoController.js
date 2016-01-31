@@ -35,4 +35,13 @@ toDo.controller('toDoController', [function() {
     self.taskList.splice(index, 1);
   };
 
+  self.showCompleted = function() {
+    for (i = 0; i < self.taskList.length; i += 1) {
+      if (self.taskList[i].completed === false) {
+        self.taskList.splice(i, 1);
+        i-=1;
+      }
+    }
+  };
+
 }]);

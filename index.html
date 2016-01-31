@@ -22,6 +22,11 @@
       <button class="addTaskBtn btn btn-success" ng-click="toDoCtrl.addTask()">OK</button>
       <button class="clearComplete btn btn-warning" ng-click="toDoCtrl.clearCompleted()">Clear Completed</button>
       <br>
+      <div class="btn-group" role="group" aria-label="...">
+        <button type="button" ng-click="toDoCtrl.showAll()" class="btn btn-xs groupee">All</button>
+        <button type="button" ng-click="toDoCtrl.showActive()" class="btn btn-xs groupee">Active</button>
+        <button type="button" ng-click="toDoCtrl.showCompleted()" class="btn btn-xs groupee showCompleteBtn">Completed</button>
+      </div>
       <br>
       <div class="bullets">
         <div class='list' ng-repeat='task in toDoCtrl.taskList'>

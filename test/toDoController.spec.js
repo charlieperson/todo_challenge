@@ -48,10 +48,20 @@ describe('toDo', function() {
     expect(ctrl.taskList.length).toEqual(1);
   });
 
-  it('splices ', function() {
+  it('deletes specified task when its index is passed to deleteThat()', function() {
     ctrl.task = 'task 1';
     ctrl.addTask();
     ctrl.deleteThat(0);
     expect(ctrl.taskList).toEqual([]);
+  });
+
+  it('sets taskList to tasks that are completed when showCompleted() is called', function(){
+    ctrl.task = 'Completed task!';
+    ctrl.addTask();
+    ctrl.completeThat(0);
+    ctrl.task = 'Incomplete task!';
+    ctrl.addTask();
+    ctrl.showCompleted();
+    expect(ctrl.taskList.length).toEqual(1);
   });
 });
