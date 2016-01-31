@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>To-do list</title>
-    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -15,16 +15,26 @@
 
 
   <body ng-controller="toDoController as toDoCtrl">
-    <h3 ng-hide="toDoCtrl.editing">Add task:</h3>
-    <h3 ng-show="toDoCtrl.editing">Edit task:</h3>
-    <input type="text" ng-model="toDoCtrl.task">
-    <button class="addTaskBtn btn" ng-click="toDoCtrl.addTask()">OK</button>
-
-    <div class='list' ng-repeat='task in toDoCtrl.taskList'>
-      <input type='checkbox' class='checkit' ng-click="toDoCtrl.completeThat($index)">
-        <h2 class='items completed-{{task.completed}}'>{{task.taskName}}</h2>
-      <button class="editBtn" ng-click="toDoCtrl.editThat($index)">Edit</button>
+    <div class="contain">
+      <h2 ng-hide="toDoCtrl.editing">Add task:</h2>
+      <h2 ng-show="toDoCtrl.editing">Edit task:</h2>
+      <input type="text" ng-model="toDoCtrl.task">
+      <button class="addTaskBtn btn btn-success" ng-click="toDoCtrl.addTask()">OK</button>
+      <button class="clearComplete btn btn-warning" ng-click="toDoCtrl.clearCompleted()">Clear Completed</button>
+      <br>
+      <br>
+      <div class="bullets">
+        <div class='list' ng-repeat='task in toDoCtrl.taskList'>
+          <input type='checkbox' class='checkit' ng-click="toDoCtrl.completeThat($index)">
+          <h4 class='item completed-{{task.completed}}'>{{task.taskName}}</h4>
+          <div class="buttons">
+            <button class="editBtn btn btn-primary btn-xs" ng-click="toDoCtrl.editThat($index)">Edit</button>
+            <button class="deleteBtn btn btn-danger btn-xs" ng-click="toDoCtrl.deleteThat($index)">Delete</button>
+          </div>
+          <br>
+          <div class="breaker"></div>
+        </div>
+      </div>
     </div>
-
   </body>
 </html>

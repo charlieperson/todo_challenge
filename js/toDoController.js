@@ -22,4 +22,17 @@ toDo.controller('toDoController', [function() {
     self.taskList.splice(index, 1);
   };
 
+  self.clearCompleted = function() {
+    for (i = 0; i < self.taskList.length; i += 1) {
+      if (self.taskList[i].completed === true) {
+        self.taskList.splice(i, 1);
+        i-=1;
+      }
+    }
+  };
+
+  self.deleteThat = function(index) {
+    self.taskList.splice(index, 1);
+  };
+
 }]);

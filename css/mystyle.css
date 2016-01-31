@@ -1,6 +1,20 @@
+html, body {
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  color: white;
+}
+
 body {
-  padding-top: 50px;
+  padding-top: 150px;
   text-align: center;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 1)
+    ),
+    url('http://wallpapercanyon.com/wp-content/uploads/2016/01/Background-Images-25.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
 }
 
 .completed-true {
@@ -8,6 +22,42 @@ body {
   text-decoration: line-through;
 }
 
-h2, input {
+input {
+  color: black;
+}
+
+.breaker {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  height: 1px;
+  background-color: white;
+
+}
+
+.contain {
+  /*text-align: center;*/
+  margin-left: 34%;
+  width: 35%;
+}
+
+.bullets {
+  text-align: justify;
+  width: 100%;
+}
+
+h2 {
+
+  text-align: left;
+}
+
+.buttons {
+  margin-top: 9px;
+  float: right;
+}
+
+
+button, h4, input {
   display: inline-block;
+  text-align: left;
+  text-overflow: ellipsis;
 }
