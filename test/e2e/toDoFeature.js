@@ -4,8 +4,8 @@ describe('To-do list', function() {
   var taskField = element(by.model('toDoCtrl.task'));
   var addTaskButton = $('.addTaskBtn');
   var items = $('.items');
-  var editBtn = $('.editBtn');
-  var editInput = $('.editInput');
+  var checkBox = element(by.className('checkit'));
+  var h2 = element.all(by.css('h2'));
 
   beforeEach (function() {
     browser.get('http://localhost:8080');
@@ -38,11 +38,13 @@ describe('To-do list', function() {
   // As a person who actually gets stuff done
   // I want to mark my tasks as done
   // So that I don't do them twice
-  // it('changes tasks to completed when checked off', function() {
-  //   taskField.sendKeys('My first task!');
-  //   addTaskButton.click();
-  //   expect($('.completed-true')).to bePresent;
-  // });
+
+  it('changes tasks to green when checked off', function() {
+    taskField.sendKeys('My first task!');
+    addTaskButton.click();
+    checkBox.click();
+    expect(h2.first().getAttribute('class')).toMatch(/completed-true/);
+  });
 
 
 });

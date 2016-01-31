@@ -15,20 +15,15 @@
 
 
   <body ng-controller="toDoController as toDoCtrl">
-
+    <h3 ng-hide="toDoCtrl.editing">Add task:</h3>
+    <h3 ng-show="toDoCtrl.editing">Edit task:</h3>
     <input type="text" ng-model="toDoCtrl.task">
-    <button class="addTaskBtn" ng-click="toDoCtrl.addTask()">Add Task</button>
+    <button class="addTaskBtn btn" ng-click="toDoCtrl.addTask()">OK</button>
 
     <div class='list' ng-repeat='task in toDoCtrl.taskList'>
-      <input type='checkbox' ng-click="toDoCtrl.completeThat($index)">
-      <span class="completed-{{task.completed}}">
-        <h2 class='items'>{{task.taskName}}</h2>
-      </span>
-      <button class="editBtn" ng-click="toDoCtrl.showEditInput($index)">Edit</button>
-      <div ng-show="toDoCtrl.isInEditMode($index)">
-        <input class='editInput' ng-model='toDoCtrl.editedTask'>
-        <button ng-click='toDoCtrl.editThat($index)'>Update</button>
-      </div>
+      <input type='checkbox' class='checkit' ng-click="toDoCtrl.completeThat($index)">
+        <h2 class='items completed-{{task.completed}}'>{{task.taskName}}</h2>
+      <button class="editBtn" ng-click="toDoCtrl.editThat($index)">Edit</button>
     </div>
 
   </body>
