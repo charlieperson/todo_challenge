@@ -18,6 +18,9 @@
   "bugs": {
     "url": "https://github.com/charlieperson/todo_challenge/issues"
   },
+  "engines": {
+  "node": "5.4.0"
+},
   "homepage": "https://github.com/charlieperson/todo_challenge#readme",
   "devDependencies": {
     "grunt": "^0.4.5",
